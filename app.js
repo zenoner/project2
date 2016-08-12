@@ -96,10 +96,17 @@ app.post('/signup', function(req,res){
   });
 });
 
-//----- Test Route -----(where to get API DATA)
+//----- Test Route(SEARCH PAGE) -----(where to get API DATA)
 app.get('/search/', function(req, res){
   res.render('search/index.html');
 });
+
+//------FAVORITE USER PAGE------
+app.get('/favorite/', function(req, res){
+  //res.send('Hello World!!')
+  res.render('favorite/index.html');
+});
+
 
 
 
