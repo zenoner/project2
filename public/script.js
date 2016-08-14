@@ -90,11 +90,11 @@ $(document).ready(function() {
            $('#favoriteButton').unbind()
           $('#favoriteButton').click(function(e){
             //alert("test")
-            user = { title:result[0].title, author:result[0].author, image:result[0].image, description:result[0].description }
+            var bookInfo = { title:result[0].title, author:result[0].author, image:result[0].image, description:result[0].description }
             $.ajax({
               "url": "http://localhost:3000/favorite/",
               "method": "POST",
-              "data": user,
+              "data": bookInfo,
               "success": function(){
                 console.log('teSSSt')
 

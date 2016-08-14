@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 //--SESSION PART---
 app.use(session({
-  secret: 'quotation rulez',
+  secret: 'book rulez',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -37,6 +37,11 @@ app.get('/', function(req, res){
   var data = {
     'logged_in': logged_in,
     'email': email
+  }
+  console.log(req.session.user)
+  // Do you understand what this line if statment is doing?
+  if(req.session.user){
+    data.user = req.session.user;
   }
   res.render('home/index.html',data);
 });
@@ -102,27 +107,47 @@ app.get('/search/', function(req, res){
 });
 
 //------FAVORITE USER PAGE------
-app.get('/favorite/', function(req, res){
-  //res.send('Hello World!!')
-  res.render('favorite/index.html');
-});
+// app.get('/favorite/', function(req, res){
+//   //res.send('Hello World!!')
+//   res.render('favorite/index.html');
+// });
 
 //------LINKING WITH USER ID FOR THE FAVORITE PAGE-----TEST
-app.get('/favorite/:id', function(req,res){
-  var id = req.params.id;
-  db.one('SELECT * FROM FAVORITE users').then(function(data){
-    console.log(data)
-    res.render('/favorite/show.html',data);
-  });
-});
+// app.get('/favorite/:id', function(req,res){
+//   var id = req.params.id;
+//   db.one('SELECT * FROM FAVORITE users').then(function(data){
+//     console.log(data)
+//     res.render('/favorite/show.html',data);
+//   });
+// });
 
 //------insert  THE DATA TO TABLE ----
 app.post('/favorite/', function(req, res){
-  // console.log(req.body)
-  // db.none('INSERT INTO favorites (name, email, password VALUES ($1, $2, $3)', [users.name, users.email, users.password] )
-  console.log('create done worked')
-  console.log(req.body)
-  console.log('this is the current user:')
+  //console.log(req.body)
+  var favorites = req.body
+  console.log(req.session.user)
+  //console.log(favorites.title)
+  db.none('INSERT INTO favorites (title, author, image, description, fav_id ) VALUES ($1, $2, $3, $4, $5)',
+  [favorites.title, favorites.author, favorites.image, favorites.description, req.session.user.id]).catch(function(){
+    res.send('Error. The favorite could not be created')
+  }).then(function(){
+    res.send('favorite created one')
+  })
+})
+
+//-----LINKING WITH USER ID FOR THE FAVORITE PAGE------
+app.get('/favorite/:id', function(req,res){
+  // res.send("hello world")
+  console.log(req.params.id);
+  db.any('SELECT * FROM favorites WHERE fav_id=$1',[req.params.id]).then(function(data){
+    console.log(data)
+    var favorite_data ={
+      'test': 'IT IS WORKING!!!!',
+      'titles': data
+    }
+    console.log(favorite_data.titles)
+    res.render('favorite/index.html',favorite_data)
+  })
 })
 
 
@@ -130,3 +155,6 @@ app.post('/favorite/', function(req, res){
 app.listen(3000, function(){
   console.log('it is running');
 });
+
+
+

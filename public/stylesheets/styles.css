@@ -11,6 +11,7 @@ body{
 
 .book {
   border: red solid 1px;
+  display: inline-block;
 }
 
 ul
@@ -21,3 +22,8 @@ ul
 #infoTitle {
   text-align: center;
 }
+
+#infoImage {
+  text-align: center;
+}
+

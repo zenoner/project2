@@ -27,8 +27,8 @@
             </form>
             <a href="search/">click me</a>
             <br>
-            <button type="button" class="btn btn-default btn-sm"><a href="favorite/">Your favorite book</a></button>
-
+            <!-- This should be an <a> link that is styled to LOOK like a button, but not actually a button -->
+            <a href="favorite/{{user.id}}" class="btn btn-default btn-sm">Your favorite book</a>
         {{/logged_in}}
         {{^logged_in}}
         <div class="col-lg-6 center-block">
@@ -77,7 +77,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">Close</a>
-                 <a href="#" id="favoriteButton" class="btn btn-primary">FAVORITE</a>
+                 <a type="submit" id="favoriteButton" class="btn btn-primary">FAVORITE</a>
             </div>
         </div>
     </div>
