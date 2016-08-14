@@ -10,5 +10,7 @@ CREATE TABLE users (
 CREATE TABLE favorites(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NOT NULL,
   fav_id INTEGER REFERENCES users(id)
 );

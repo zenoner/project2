@@ -1,31 +1,38 @@
 <!doctype html>
 <html>
   <head>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="../jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
+  {{#logged_in}}
   <body>
-    <div class="main-container">
+    <div class="container">
+      <button type="button" class="btn btn-default pull-right"><a href="/logout">LOGOUT</a></button>
       <div class="border-container">
-        <h1>WELCOME to The Quotations Page</h1>
+        <h1 class="text-center">WELCOME  {{email}}</h1>
         <br>
-        {{#logged_in}}
+
         <div class="#">
           <div class="#">
-            <h4>Welcome {{email}}!</h4>
-            <p>Welcome to the web's most comprehensive site for famous quotes</p>
+            <div>
+            </div>
+            <p class="text-center">Welcome to the web's most comprehensive site for Book information</p>
 
-            <h1>This is a test part</h1>
+            <p class="text-center">You can search for book titles based on authors, topics, or titles of books. Just type what you want to search for in the blank field below and click Search.</p>
+            <form class="form text-center" action="search/index.html">
+                <input id="person" type="text" class="form-group" placeholder="Enter a title or author">
+                <button id="submit_button" type="submit" class="btn btn-primary btn-sm ">Search</button>
+            </form>
             <a href="search/">click me</a>
             <br>
-            <a href="favorite/">Your favorite book</a>
-          </div>
-          <a href="/logout">LOGOUT</a>
-        </div>
+            <button type="button" class="btn btn-default btn-sm"><a href="favorite/">Your favorite book</a></button>
+
         {{/logged_in}}
         {{^logged_in}}
         <div class="col-lg-6 center-block">
+        <h1 class="welcome">welcome</h1>
           <div class="well bs-component">
             <form class="form-horizontal" action="/login" method="post">
               <fieldset>
@@ -33,7 +40,7 @@
                 <div class="form-group">
                   <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                   <div class="col-lg-10">
-                    <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Email" value="ze@gmail.com">
                   </div>
                 </div>
                 <div class="form-group">
@@ -44,7 +51,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-info">Login</button>
                   </div>
                 </div>
               </fieldset>
@@ -55,5 +62,27 @@
         {{/logged_in}}
       </div>
     </div>
+
+<div id="modal-content" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 id="infoTitle">(BOOK TITLE)</h3>
+            </div>
+            <div class="modal-body">
+              <div id="infoImage">
+                <img src="#" alt="#">
+              <div id="infoDep">(INFO)</div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+                 <a href="#" id="favoriteButton" class="btn btn-primary">FAVORITE</a>
+            </div>
+        </div>
+    </div>
+</div>
   </body>
+  <script src="../script.js"></script>
 </html>
+

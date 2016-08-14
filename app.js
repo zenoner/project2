@@ -107,7 +107,23 @@ app.get('/favorite/', function(req, res){
   res.render('favorite/index.html');
 });
 
+//------LINKING WITH USER ID FOR THE FAVORITE PAGE-----TEST
+app.get('/favorite/:id', function(req,res){
+  var id = req.params.id;
+  db.one('SELECT * FROM FAVORITE users').then(function(data){
+    console.log(data)
+    res.render('/favorite/show.html',data);
+  });
+});
 
+//------insert  THE DATA TO TABLE ----
+app.post('/favorite/', function(req, res){
+  // console.log(req.body)
+  // db.none('INSERT INTO favorites (name, email, password VALUES ($1, $2, $3)', [users.name, users.email, users.password] )
+  console.log('create done worked')
+  console.log(req.body)
+  console.log('this is the current user:')
+})
 
 
 //-----SERVER-----

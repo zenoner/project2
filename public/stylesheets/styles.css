@@ -1,3 +1,23 @@
 body{
-  background-color: red;
+
+}
+.welcome {
+  text-align: center;
+}
+
+.container{
+
+}
+
+.book {
+  border: red solid 1px;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+#infoTitle {
+  text-align: center;
 }
