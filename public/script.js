@@ -40,7 +40,7 @@ $(document).ready(function() {
         if (book.volumeInfo.imageLinks.thumbnail){
           newBookObj.image = book.volumeInfo.imageLinks.thumbnail;
         } else {
-          newBookObj.image = 'no image available';
+          newBookObj.image = "http://placehold.it/350x150"
         }
         // book id
         if (book.id){
@@ -65,10 +65,10 @@ $(document).ready(function() {
       // append sstuff
       books.forEach(function(book){
         console.log(book)
-        var newBook = $('<ul class="book" id='+ book.id +'></ul>');
-        newBook.append($('<li class="title">'+ book.title + '</li>'));
-        newBook.append($('<li class="author">'+ book.author + '</li>'));
-        newBook.append($('<li class="image"><img src="'+book.image +'" /> </li>'));
+        var newBook = $('<div class="book" id='+ book.id +'></div>');
+        newBook.append($('<div class="title">'+ book.title + '</div>'));
+        newBook.append($('<div class="author">'+ book.author + '</div>'));
+        newBook.append($('<div class="image"><img src="'+book.image +'" /> </div>'));
         bookList.append(newBook);
       });
 
