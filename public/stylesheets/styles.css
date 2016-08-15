@@ -22,11 +22,16 @@ body{
   width: 20%;
   cursor: pointer;
   background: #e2e2e2;
-  transition: background 5olds cubic-bezier(.85,.23,.21,.2);
+  transition: background 1olds cubic-bezier(.85,.23,.21,.2);
+  text-align: center;
 }
 
 .book:hover{
-  background: green;
+  background: #428bca;
+}
+
+.favoritebox {
+  text-align: none;
 }
 
 ul
@@ -52,5 +57,53 @@ ul
 #favLink {
 
 }
+
+.introPart{
+  margin-top: -30px;
+}
+
+.col-sm-4 {
+/*  border: purple solid 1px;
+*/  height: 250px;
+  text-align: center;
+}
+.col-sm-8 {
+/*   border: purple solid 1px;
+*/   height: 250px;
+}
+
+
+/*this is boostrap part*/
+.container {
+  max-width: 100%;
+ /* border: yellow solid 1px;*/
+  @include make-container();
+}
+.row {
+  @include make-row();
+}
+.content-main {
+  @include make-col-ready();
+
+  @media (max-width: 32em) {
+    @include make-col(6);
+  }
+  @media (min-width: 32.1em) {
+    @include make-col(8);
+  }
+}
+.content-secondary {
+  @include make-col-ready();
+
+  @media (max-width: 32em) {
+    @include make-col(6);
+  }
+  @media (min-width: 32.1em) {
+    @include make-col(4);
+  }
+}
+
+
+
 
 

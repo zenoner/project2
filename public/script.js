@@ -2,6 +2,7 @@
 //variable group
  var cList = $('ul.author')
 
+
 $(document).ready(function() {
   console.log('loaded!!!')
 
@@ -12,9 +13,10 @@ $(document).ready(function() {
    var query = $('#person').val()
    query = query.replace(' ','+')
    //console.log(query)
-   var myurl = "https://www.googleapis.com/books/v1/volumes?q="+query+"&callback=?"
 
-   // console.log(myurl)
+   var myurl = "https://www.googleapis.com/books/v1/volumes?q="+query+"&callback=?&startIndex=0&maxRange=40"
+
+   console.log(myurl)
 
     $.getJSON(myurl,function(data){ //this is just like an ajax call, syntax is a bit different, but same results.
       console.log(data);
@@ -74,7 +76,7 @@ $(document).ready(function() {
 
       console.log($('#bookList'))
 
-
+      //----MODLA PART ---
        $('.book').click(function(e){
           e.preventDefault();
           // console.log(this,'this is "this" keyword ')
@@ -96,7 +98,7 @@ $(document).ready(function() {
               "method": "POST",
               "data": bookInfo,
               "success": function(){
-                console.log('teSSSt')
+                console.log('You got favorite book!')
 
 
               }
@@ -120,91 +122,4 @@ $(document).ready(function() {
 })// end doc.ready
 
 
-
-
-
-
-
-
-
-
-
-
-//===================
-//===================
-//PAST CODE 8/12
-//===================
-//===================
-
-// ends click function
-      //----LIST OF AUTHORS----
-//       var array_of_authors = []
-//       var $authorList = $('<ul>')
-//       data.items.forEach(function(result){
-//         console.log(result.volumeInfo.authors)
-//         array_of_authors.push(result.volumeInfo.authors)
-//         //console.log(array_of_authors)
-//         $authorList.append($('<li>').text(result.volumeInfo.authors))
-//       })
-
-//       //----LIST OF IMAGES----
-//       var array_of_images = []
-//       var $imageList = $('<ul>')
-//       data.items.forEach(function(result){
-
-//         if (result.volumeInfo.imageLinks){
-//           console.log(result.volumeInfo.imageLinks.thumbnail)
-//           array_of_images.push(result.volumeInfo.imageLinks.thumbnail)
-//           // $imageList.append($('<li> src=').text(result.volumeInfo.imageLinks.thumbnail));
-//           var getImage = $('<img>').attr('src', result.volumeInfo.imageLinks.thumbnail);
-//         }else{
-//           array_of_images.push("null")
-//         }
-
-//       })
-//       //---LIST OF TITLES----
-//       var array_of_titles = []
-//       var $ul = $('<ul>');
-//       data.items.forEach(function(result){
-//         array_of_titles.push(result.volumeInfo.title)
-//         $ul.append($('<li>').text(result.volumeInfo.title));
-//       });
-
-//       // //---LIST OF DESCRIPTION----
-//       // var array_of_description = []
-//       // var $desList = $('<ul>');
-//       // data.items.forEach(function(result){
-//       //  // console.log(result.searchInfo.textSnippet)
-//       // })
-
-
-// console.log(array_of_authors)
-//       //APPEND THE LISTS
-//      // $('body').append(getImage);
-//       $('body').append($ul); //TITLES
-//       $('body').append($authorList) //AUTHORS
-//       $('body').append($imageList)
-
-//       $('#test').empty()
-//       $('p').empty()
-//     })
-//   })
-
-// var a1 = [1,2], a2 = [7,8], a3 = [9,2];
-// for (var i =0 ; i < a1.length; i++){
-//   a3.map(function(e,i,a){
-//     return [e, a2[i]]
-//   })
-// }
-// console.log(i)
-
-// i have my 1:1 with annette now, do you know where she went?
-// after i do them, jared and i will help with the zipper function
-
-
-
-
-//if you put all the titles into an array
-//you could then send the array to the html with res.render
-// then use {{# }} and {{/ }} to loop over it
 

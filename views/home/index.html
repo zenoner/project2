@@ -4,30 +4,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
     <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/hover.css" rel="stylesheet" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <script src="../jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   {{#logged_in}}
   <body>
     <div class="container">
-      <button type="button" class="btn btn-default pull-right"><a href="/logout">LOGOUT</a></button>
+      <button type="button" class="btn btn-default pull-right button hvr-bounce-out"><a href="/logout">LOGOUT</a></button>
       <div class="border-container">
-        <h1 class="text-center">WELCOME</h1>
+        <h1 class="text-center">Welcome to Bookfinder</h1>
         <br>
 
-        <div class="#">
+        <div class="introPart">
           <div class="#">
             <div>
+              <h3 class="text-center">The web's most comprehensive site for Book information</h3>
+              <p class="text-center">You can search for book titles based on authors, topics, or titles of books.</p>
+              <p class="text-center">Just type whatever you want to search for in the blank field below and click Search.</p>
+              <p class="text-center">Your Favorites list is a collection of saved book lists</p>
             </div>
-            <p class="text-center">Welcome to the web's most comprehensive site for Book information</p>
-
-            <p class="text-center">You can search for book titles based on authors, topics, or titles of books. Just type what you want to search for in the blank field below and click Search.</p>
+          </div>
+        </div>
 
           <div>
             <form class="form text-center" action="search/index.html">
                 <input id="person" type="text" class="form-group" placeholder="Enter a title or author">
-                <button id="submit_button" type="submit" class="btn btn-primary btn-sm ">Search</button>
-                <a href="favorite/{{user.id}}" id="favLink" class="btn btn-default btn-sm">Your favorite book</a>
+                <button id="submit_button" type="submit" class="btn btn-primary btn-sm button hvr-float-shadow ">Search</button>
+                <a href="favorite/{{user.id}}" id="favLink" class="btn btn-primary btn-sm button hvr-icon-pop">Your favorite list</a>
             </form>
           </div>
         {{/logged_in}}
@@ -54,7 +59,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-info">Login</button>
+                    <button type="submit" class="btn btn-info button hvr-pulse-grow  ">Login</button>
                   </div>
                 </div>
               </fieldset>
@@ -82,7 +87,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">Close</a>
-                 <a type="submit" id="favoriteButton" class="btn btn-primary">FAVORITE</a>
+                 <a type="submit" id="favoriteButton" class="btn btn-primary button hvr-icon-pop">FAVORITE</a>
             </div>
         </div>
     </div>
