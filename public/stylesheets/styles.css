@@ -1,5 +1,6 @@
 body{
-
+  background-image: url(https://images2.alphacoders.com/261/26102.jpg);
+  color: #CDCDCD;
 }
 .welcome {
   text-align: center;
@@ -16,13 +17,26 @@ body{
 
 }
 
+.col-lg-2{
+  color: black;
+}
+
+.bookList {
+  margin: 10px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 25px;
+  opacity: 0.6;
+}
+
 .book {
   /*border: red solid 1px;*/
   height: 300px;
   width: 20%;
   cursor: pointer;
   background: #e2e2e2;
-  transition: background 1olds cubic-bezier(.85,.23,.21,.2);
+  transition: background 500ms cubic-bezier(.85,.23,.21,.2);
+  color: black;
   text-align: center;
 }
 
@@ -30,13 +44,40 @@ body{
   background: #428bca;
 }
 
+#person{
+  color: black;
+}
+
+
 .favoritebox {
   text-align: none;
 }
 
-ul
-{
-    list-style-type: none;
+.introText{
+  margin: 10px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 25px;
+  opacity: 0.6;
+  filter: alpha(opacity=10); /* For IE8 and earlier */
+}
+
+.introText p{
+  margin: 10px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#welText {
+  font-size: 50px;
+}
+
+#infoDep{ /* modula part*/
+  margin-top: 10px;
+}
+
+.modal-content{
+  color: black;
 }
 
 #bookList {
@@ -44,6 +85,10 @@ ul
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.title {
+  margin-top: 10px;
 }
 
 #infoTitle {
@@ -68,10 +113,37 @@ ul
   text-align: center;
 }
 .col-sm-8 {
-/*   border: purple solid 1px;
-*/   height: 250px;
+  height: 250px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 25px;
+  opacity: 0.6;
+  filter: alpha(opacity=10); /* For IE8 and earlier */
 }
 
+.col-sm-8 h1{
+  font-weight: bold;
+  color: black;
+}
+
+.col-sm-8 h3{
+  font-weight: bold;
+  color: black;
+}
+
+.col-sm-8 h4{
+  font-weight: bold;
+  color: black;
+}
+
+img {
+/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+*/
+  -webkit-box-shadow: 0 10px 6px -6px black;
+     -moz-box-shadow: 0 10px 6px -6px black;
+          box-shadow: 0 10px 6px -6px black;
+  margin-top: 10px;
+}
 
 /*this is boostrap part*/
 .container {

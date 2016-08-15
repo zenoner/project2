@@ -21,18 +21,17 @@
   <br>
 
   <div class="row">
+
    {{#titles}}
       <div class="col-sm-4">
         <img src={{image}}>
       </div>
       <div class="col-sm-8">
+        <button class="deleteUser" data-id={{id}}>DELETE!!</button>
         <h1>{{title}}</h1>
         <h3>{{author}}</h3>
         <h4>{{description}}</h4>
       </div>
-<!--       <div class="col-sm-4">
-        One of three columns
-      </div> -->
     {{/titles}}
   </div>
 </div>

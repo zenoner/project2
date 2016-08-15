@@ -14,7 +14,7 @@ $(document).ready(function() {
    query = query.replace(' ','+')
    //console.log(query)
 
-   var myurl = "https://www.googleapis.com/books/v1/volumes?q="+query+"&callback=?&startIndex=0&maxRange=40"
+   var myurl = "https://www.googleapis.com/books/v1/volumes?q="+query+"&callback=?&startIndex=0&maxResults=40"
 
    console.log(myurl)
 
@@ -39,11 +39,12 @@ $(document).ready(function() {
           newBookObj.author = 'no author available';
         }
         // image
-        if (book.volumeInfo.imageLinks.thumbnail){
+        if (!book.volumeInfo.imageLinks) {
+          newBookObj.image = 'http://placehold.it/350x150';
+        } else if (book.volumeInfo.imageLinks.thumbnail){
           newBookObj.image = book.volumeInfo.imageLinks.thumbnail;
-        } else {
-          newBookObj.image = "http://placehold.it/350x150"
         }
+
         // book id
         if (book.id){
           newBookObj.id = book.id;
@@ -54,7 +55,7 @@ $(document).ready(function() {
         if (book.searchInfo){
           newBookObj.description = book.searchInfo.textSnippet;
         } else {
-          newBookObj.description = 'no description available';
+          newBookObj.description = null;
         }
         books.push(newBookObj)
       });
@@ -76,7 +77,7 @@ $(document).ready(function() {
 
       console.log($('#bookList'))
 
-      //----MODLA PART ---
+      //----MODAL PART ---
        $('.book').click(function(e){
           e.preventDefault();
           // console.log(this,'this is "this" keyword ')
@@ -90,6 +91,7 @@ $(document).ready(function() {
             show: true
            });
            $('#favoriteButton').unbind()
+
           $('#favoriteButton').click(function(e){
             //alert("test")
             var bookInfo = { title:result[0].title, author:result[0].author, image:result[0].image, description:result[0].description }
@@ -107,6 +109,7 @@ $(document).ready(function() {
 
           console.log(this)
           console.log(books)
+          //TO APPEND THE DATA TO MODAL
           $('#infoTitle').text(result[0].title)
           $('#infoImage').find('img').attr("src", result[0].image)
           $('#infoDep').text(result[0].description)
