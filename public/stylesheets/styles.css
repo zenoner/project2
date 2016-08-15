@@ -3,6 +3,13 @@ body{
 }
 .welcome {
   text-align: center;
+  font-size: 60px;
+  font-family: 'Anton', sans-serif;
+}
+
+.border-container{
+  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .container{
