@@ -55,7 +55,7 @@ $(document).ready(function() {
         if (book.searchInfo){
           newBookObj.description = book.searchInfo.textSnippet;
         } else {
-          newBookObj.description = null;
+          newBookObj.description = 'no description available';
         }
         books.push(newBookObj)
       });
@@ -130,7 +130,8 @@ $(document).ready(function() {
               "url": "http://localhost:3000/favorite/"+id,
               "method": "DELETE",
               "success": function(){
-                $('.col-sm-4').closest('img').removes();
+                $('.col-sm-4').remove();
+                $('.col-sm-8').remove();
                 return false
                 // this is removing all divs
                 // try to figure out how to remove only the div that you are deleting
