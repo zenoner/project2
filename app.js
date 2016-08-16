@@ -127,8 +127,27 @@ app.post('/favorite/', function(req, res, next){
   var favorites = req.body
   console.log(req.session.user)
   //console.log(favorites.title)
-  db.none('INSERT INTO favorites (title, author, image, description, fav_id ) VALUES ($1, $2, $3, $4, $5)',
-  [favorites.title, favorites.author, favorites.image, favorites.description, req.session.user.id]
+  console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+  console.log(favorites)
+  console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+  // you need to edit this line to have all the new coulmns
+  db.none(
+    'INSERT INTO favorites ' +
+    '(title, author, image, description, publisher, publisherdate, ' +
+    'categories, page_num, isbm, buy_book, sample_book, fav_id) ' +
+    'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
+  [favorites.title,
+   favorites.author,
+   favorites.image,
+   favorites.description,
+   favorites.publisher,
+   favorites.publisherdate,
+   favorites.categories,
+   favorites.pageCount,
+   favorites.isbm,
+   favorites.buy_book,
+   favorites.sample_book,
+   req.session.user.id]
   ).then(function(){
       res.success = 'favorite created one';
       next();

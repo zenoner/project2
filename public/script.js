@@ -57,6 +57,59 @@ $(document).ready(function() {
         } else {
           newBookObj.description = 'no description available';
         }
+        // PUBLISHER
+        if (book.volumeInfo.publisher){
+          newBookObj.publisher = book.volumeInfo.publisher;
+        } else {
+          newBookObj.publisher = 'no publisher available';
+        }
+
+        //for whatever reason, its stopping here when making the object
+
+        // PUBLISHERDATE
+        if (book.volumeInfo.publishedDate){
+          newBookObj.publisherdate = book.volumeInfo.publishedDate;
+        } else {
+          newBookObj.publisherdate = 'no publisher available';
+        }
+        // CATEGORIES
+        if (book.volumeInfo.categories){
+          newBookObj.categories = book.volumeInfo.categories[0];
+        } else {
+          newBookObj.categories = 'no publisher available';
+        }
+        // pagenum
+        if (book.volumeInfo.pageCount){
+          newBookObj.pageCount = book.volumeInfo.pageCount.toString();
+        } else {
+          newBookObj.pageCount = 'no publisher available';
+        }
+        // ISBM
+        if (book.volumeInfo.industryIdentifiers){
+          newBookObj.isbm = book.volumeInfo.industryIdentifiers[0].identifier.toString();
+        } else {
+          newBookObj.isbm = 'no publisher available';
+        }
+        // buy_book
+        if (book.volumeInfo.infoLink){
+          newBookObj.buy_book = book.volumeInfo.infoLink;
+        } else {
+          newBookObj.buy_book = 'no publisher available';
+        }
+
+        // sample_book
+        if (book.volumeInfo.previewLink){
+          newBookObj.sample_book = book.volumeInfo.previewLink;
+        } else {
+          newBookObj.sample_book = 'no publisher available';
+        }
+
+
+
+        //you have to build the rest of it here
+
+
+        //DATA INTO BOOKS ARRAY
         books.push(newBookObj)
       });
 
@@ -80,13 +133,11 @@ $(document).ready(function() {
       //----MODAL PART FUNCTION ---
        $('.book').click(function(e){
           e.preventDefault();
-          // console.log(this,'this is "this" keyword ')
-          var selectedId = this.id
-          var result = books.filter(function(obj) {
-            // console.log(obj.id === this.id)
-            return obj.id === selectedId;
-          });
+          var bookid = this.id
+          var result = $.grep(books, function(e){ return e.id == bookid; });
+          var result = result[0]
           console.log(result)
+          // debugger
           $('#modal-content').modal({
             show: true
            });
@@ -94,25 +145,23 @@ $(document).ready(function() {
 
           $('#favoriteButton').click(function(e){
             //alert("test")
-            var bookInfo = { title:result[0].title, author:result[0].author, image:result[0].image, description:result[0].description }
             $.ajax({
               "url": "http://localhost:3000/favorite/",
               "method": "POST",
-              "data": bookInfo,
+              "data": result, //bookInfo,// This isn't the full book object we are expecting
               "success": function(){
                 console.log('You got favorite book!')
-
-
               }
             })
           })
 
-          console.log(this)
-          console.log(books)
+          // console.log(this)
+          // console.log(books)
           //TO APPEND THE DATA TO MODAL
-          $('#infoTitle').text(result[0].title)
-          $('#infoImage').find('img').attr("src", result[0].image)
-          $('#infoDep').text(result[0].description)
+
+          $('#infoTitle').text(result.title)
+          $('#infoImage').find('img').attr("src", result.image)
+          $('#infoDep').text(result.description)
         })
 
 
