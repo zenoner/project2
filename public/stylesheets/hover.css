@@ -4003,7 +4003,7 @@
   transition-duration: 0.3s;
 }
 .hvr-icon-bounce:before {
-  content: "\f087";
+  content: "\f1f8";
   position: absolute;
   right: 1em;
   padding: 0 1px;

@@ -44,6 +44,11 @@ body{
   background: #428bca;
 }
 
+.deleteUser {
+  background-color: red;
+  border-radius: 50px;
+}
+
 #person{
   color: black;
 }
@@ -68,6 +73,19 @@ body{
   color: #000000;
 }
 
+.reloadButton{
+  text-align: center;
+}
+
+.button {
+
+}
+
+#buttonFresh {
+  position: absolute;
+  background-color: grey;
+}
+
 #welText {
   font-size: 50px;
 }
@@ -89,6 +107,13 @@ body{
 
 .title {
   margin-top: 10px;
+  font-size: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.author {
+  font-size: 10px;
 }
 
 #infoTitle {

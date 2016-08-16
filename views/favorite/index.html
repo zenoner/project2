@@ -10,25 +10,29 @@
     <link href="/stylesheets/hover.css" rel="stylesheet" media="all">
     <script src="../jquery.js"></script>
     <script src="../script.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
- <button type="button" class="btn btn-default pull-right button hvr-bounce-out"><a href="/logout">LOGOUT</a></button>
+  <button type="button" class="btn btn-default pull-right button hvr-bounce-out"><a href="/logout">LOGOUT</a></button>
   <button type="button" class="btn btn-default pull-right  button hvr-curl-top-right"><a href="/">Back</a></button>
 
   <h1>Your favorite list</h1>
   <p>Remember books you want to buy later or collect them for your favorite book list.</p>
+<div class="refreshButoon">
+  <button type="button" value="Reload Page" onClick="window.location.reload()" class="btn btn-default button hvr-icon-spin" id="buttonFresh">Refresh Page</button>
+</div>
   <br>
-
+  <br>
   <div class="row">
 
    {{#titles}}
-      <div class="col-sm-4">
+      <div class="col-sm-4 id="{{id}}">
         <img src={{image}}>
       </div>
-      <div class="col-sm-8">
-        <button class="deleteUser" data-id={{id}}>DELETE!!</button>
+      <div class="col-sm-8 " id="{{id}}">
+        <button class="deleteUser button hvr-icon-bounce hvr-grow-shadow " data-id={{id}}>Delete</button>
         <h1>{{title}}</h1>
         <h3>{{author}}</h3>
         <h4>{{description}}</h4>
@@ -37,22 +41,7 @@
   </div>
 </div>
 
-<!-- <div class="container">
-  <h1>Your favorite list</h1>
-  <p>Remember books you want to buy later or collect of your favorite book list.</p>
-    <div class="row">
-      {{#titles}}
-        <div class="col-md-4">
-          <img src={{image}}>
-        </div>
-        <div class="col-md-8">
-          <h1>{{title}}</h1>
-          <h3>{{author}}</h3>
-          <h4>{{description}}</h4>
-        </div>
-      {{/titles}}
-    </div>
-</div> -->
+
 
 </body>
 

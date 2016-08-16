@@ -40,7 +40,7 @@ $(document).ready(function() {
         }
         // image
         if (!book.volumeInfo.imageLinks) {
-          newBookObj.image = 'http://placehold.it/350x150';
+          newBookObj.image = 'http://tomcrosshill.com/wp-content/uploads/2016/06/cover-not-available.gif';
         } else if (book.volumeInfo.imageLinks.thumbnail){
           newBookObj.image = book.volumeInfo.imageLinks.thumbnail;
         }
@@ -120,22 +120,23 @@ $(document).ready(function() {
 
   })  //end of click function
  //----------DELETE row in favorite table
-              $('.deleteUser').click(function(e){
-                e.preventDefault()
-                console.log('DELETE CLICK WORKING!')
-                id = $(this).attr('data-id')
-                console.log(id);
-                // div = $(this).parent()
-                $.ajax({
-                  "url": "http://localhost:3000/favorite/"+id,
-                  "method": "DELETE",
-                  "success": function(){
-                    $('div').remove()
-                    // this is removing all divs
-                    // try to figure out how to remove only the div that you are deleting
-                  }
-                })
-              })
+          $('.deleteUser').click(function(e){
+            e.preventDefault()
+            console.log('DELETE CLICK WORKING!')
+            id = $(this).attr('data-id')
+            console.log(id);
+            // div = $(this).parent()
+            $.ajax({
+              "url": "http://localhost:3000/favorite/"+id,
+              "method": "DELETE",
+              "success": function(){
+                $('.col-sm-4').closest('img').removes();
+                return false
+                // this is removing all divs
+                // try to figure out how to remove only the div that you are deleting
+              }
+            })
+          })
  //-----------------
 
 })// end doc.ready
