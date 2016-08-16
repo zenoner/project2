@@ -124,12 +124,15 @@ $(document).ready(function() {
                 e.preventDefault()
                 console.log('DELETE CLICK WORKING!')
                 id = $(this).attr('data-id')
-                div = $(this).parent()
+                console.log(id);
+                // div = $(this).parent()
                 $.ajax({
                   "url": "http://localhost:3000/favorite/"+id,
                   "method": "DELETE",
                   "success": function(){
-                    $(div).remove()
+                    $('div').remove()
+                    // this is removing all divs
+                    // try to figure out how to remove only the div that you are deleting
                   }
                 })
               })

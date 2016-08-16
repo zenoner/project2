@@ -17,6 +17,3 @@ CREATE TABLE favorites(
 );
 
 INSERT INTO favorites (title, author, image, description) VALUES ('zen', 'seiji', 'https://www.nasa.gov','this is test' )
-
-
-i know it is complicated because we use sessi
