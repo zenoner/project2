@@ -122,17 +122,28 @@ app.get('/search/', function(req, res){
 // });
 
 //------insert  THE DATA TO TABLE ----
-app.post('/favorite/', function(req, res){
+app.post('/favorite/', function(req, res, next){
   //console.log(req.body)
   var favorites = req.body
   console.log(req.session.user)
   //console.log(favorites.title)
   db.none('INSERT INTO favorites (title, author, image, description, fav_id ) VALUES ($1, $2, $3, $4, $5)',
-  [favorites.title, favorites.author, favorites.image, favorites.description, req.session.user.id]).catch(function(){
-    res.send('Error. The favorite could not be created')
-  }).then(function(){
-    res.send('favorite created one')
-  })
+  [favorites.title, favorites.author, favorites.image, favorites.description, req.session.user.id]
+  ).then(function(){
+      res.success = 'favorite created one';
+      next();
+  }).catch(function(error){
+    console.log(error)
+    res.error = 'Error. The favorite could not be created'
+  });
+
+  if (res.error){
+    var response = res.error;
+  } else {
+    var response = "yay"
+    console.log(res.success)
+  }
+  res.send(response)
 })
 
 //-----LINKING WITH USER ID FOR THE FAVORITE PAGE------

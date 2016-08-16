@@ -20,25 +20,27 @@
 
   <h1>Your favorite list</h1>
   <p>Remember books you want to buy later or collect them for your favorite book list.</p>
-<div class="refreshButoon">
+<!-- <div class="refreshButoon">
   <button type="button" value="Reload Page" onClick="window.location.reload()" class="btn btn-default button hvr-icon-spin" id="buttonFresh">Refresh Page</button>
-</div>
+</div -->
   <br>
   <br>
-  <div class="row">
+
 
    {{#titles}}
-      <div class="col-sm-4 id="{{id}}">
-        <img src={{image}}>
-      </div>
-      <div class="col-sm-8 " id="{{id}}">
-        <button class="deleteUser button hvr-icon-bounce hvr-grow-shadow " data-id={{id}}>Delete</button>
-        <h1>{{title}}</h1>
-        <h3>{{author}}</h3>
-        <h4>{{description}}</h4>
+     <div class="row">
+        <div class="col-sm-4 id="{{id}}">
+          <img src={{image}}>
+        </div>
+        <div class="col-sm-8 " id="{{id}}">
+          <button class="deleteUser button hvr-icon-bounce hvr-grow-shadow " data-id={{id}}>Delete</button>
+          <h1>{{title}}</h1>
+          <h3>{{author}}</h3>
+          <p><small>{{description}}</small></p>
+        </div>
       </div>
     {{/titles}}
-  </div>
+
 </div>
 
 

@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS favorites;
+DROP TABLE IF EXISTS users;
+
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -12,7 +13,7 @@ CREATE TABLE favorites(
   title VARCHAR(255) NOT NULL,
   author VARCHAR(255) NOT NULL,
   image VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  d
   fav_id INTEGER REFERENCES users(id)
 );
 

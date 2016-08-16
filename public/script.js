@@ -17,35 +17,35 @@ $(document).ready(function() {
    var myurl = "https://www.googleapis.com/books/v1/volumes?q="+query+"&callback=?&startIndex=0&maxResults=40"
 
    console.log(myurl)
-
+   //AJAX FUNCTION
     $.getJSON(myurl,function(data){ //this is just like an ajax call, syntax is a bit different, but same results.
       console.log(data);
       var books = [];
-
+      // TITLE AND AUTHORS
       data.items.forEach(function(book){
         //console.log(book.volumeInfo.title + " by " + book.volumeInfo.authors[0]);
         var newBookObj = {};
         // these check if the data is valid before adding it
-        //title
+        //TITLE
         if (book.volumeInfo.title){
           newBookObj.title = book.volumeInfo.title;
         } else {
           newBookObj.title = 'no title available';
         }
-        // author
+        // AUTHOR
         if (book.volumeInfo.authors && book.volumeInfo.authors[0]){
           newBookObj.author = book.volumeInfo.authors[0];
         } else {
           newBookObj.author = 'no author available';
         }
-        // image
+        // IMAGE
         if (!book.volumeInfo.imageLinks) {
           newBookObj.image = 'http://tomcrosshill.com/wp-content/uploads/2016/06/cover-not-available.gif';
         } else if (book.volumeInfo.imageLinks.thumbnail){
           newBookObj.image = book.volumeInfo.imageLinks.thumbnail;
         }
 
-        // book id
+        // BOOK ID
         if (book.id){
           newBookObj.id = book.id;
         } else {
@@ -53,7 +53,7 @@ $(document).ready(function() {
         }
         //description
         if (book.searchInfo){
-          newBookObj.description = book.searchInfo.textSnippet;
+          newBookObj.description = book.volumeInfo.description;  //searchInfo.textSnippet;
         } else {
           newBookObj.description = 'no description available';
         }
@@ -65,7 +65,7 @@ $(document).ready(function() {
 
       var bookList = $('<div id="bookList">');
       $('.container').append(bookList);
-      // append sstuff
+      // APPEND STUFF
       books.forEach(function(book){
         console.log(book)
         var newBook = $('<div class="book" id='+ book.id +'></div>');
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
       console.log($('#bookList'))
 
-      //----MODAL PART ---
+      //----MODAL PART FUNCTION ---
        $('.book').click(function(e){
           e.preventDefault();
           // console.log(this,'this is "this" keyword ')
@@ -121,6 +121,11 @@ $(document).ready(function() {
   })  //end of click function
  //----------DELETE row in favorite table
           $('.deleteUser').click(function(e){
+            var delete_button = $(this);
+            var parent = delete_button.parent();
+            var grandParent = parent.parent();
+            //console.log(grandParent)
+
             e.preventDefault()
             console.log('DELETE CLICK WORKING!')
             id = $(this).attr('data-id')
@@ -130,11 +135,10 @@ $(document).ready(function() {
               "url": "http://localhost:3000/favorite/"+id,
               "method": "DELETE",
               "success": function(){
-                $('.col-sm-4').remove();
-                $('.col-sm-8').remove();
+                grandParent.remove();
                 return false
-                // this is removing all divs
-                // try to figure out how to remove only the div that you are deleting
+
+
               }
             })
           })
