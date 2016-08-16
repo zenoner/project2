@@ -150,6 +150,15 @@ app.get('/favorite/:id', function(req,res){
   })
 })
 
+//-----DELETE ITEM IN FAVORITE DB------
+app.delete('/favorite/:id', function(req,res){
+  id = req.params.id
+  db.none('DELETE FROM favorites WHERE fav_id=$1').then(function(data){
+    console.log("DELETE DONE!!!!")
+    res.render('index')
+  })
+})
+
 
 //-----SERVER-----
 app.listen(3000, function(){

@@ -116,13 +116,23 @@ $(document).ready(function() {
         })
 
 
-
-
     }); //end of json
-  })  //end of click function
 
+  })  //end of click function
+ //----------DELETE row in favorite table
+              $('.deleteUser').click(function(e){
+                e.preventDefault()
+                console.log('DELETE CLICK WORKING!')
+                id = $(this).attr('data-id')
+                div = $(this).parent()
+                $.ajax({
+                  "url": "http://localhost:3000/favorite/"+id,
+                  "method": "DELETE",
+                  "success": function(){
+                    $(div).remove()
+                  }
+                })
+              })
+ //-----------------
 
 })// end doc.ready
-
-
-
