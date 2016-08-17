@@ -5,7 +5,10 @@ var mustacheExpress = require('mustache-express');
 var bodyParser = require('body-parser');
 var session = require('express-session')
 
-var db = pgp('postgres://Seiji@localhost:5432/auth2');
+//var db = pgp('postgres://Seiji@localhost:5432/auth2');
+var psqldb = process.env.DATABASE_URL || 'postgres://robertcrozier@localhost:5432/bands_on_the_run';
+var db = pgp(psqldb);
+
 
 /* BCrypt stuff here */
 const bcrypt = require('bcrypt');
@@ -191,10 +194,14 @@ app.delete('/favorite/:id', function(req,res){
 
 
 //-----SERVER-----
-app.listen(3000, function(){
-  console.log('it is running');
+// app.listen(3000, function(){
+//   console.log('it is running');
+// });
+
+//heroku...
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function(){
+ console.log('Node app is running on port ', app.get('port'));
 });
-
-
 
 

@@ -70,38 +70,38 @@ $(document).ready(function() {
         if (book.volumeInfo.publishedDate){
           newBookObj.publisherdate = book.volumeInfo.publishedDate;
         } else {
-          newBookObj.publisherdate = 'no publisher available';
+          newBookObj.publisherdate = 'no published date available';
         }
         // CATEGORIES
         if (book.volumeInfo.categories){
           newBookObj.categories = book.volumeInfo.categories[0];
         } else {
-          newBookObj.categories = 'no publisher available';
+          newBookObj.categories = 'no categories available';
         }
         // pagenum
         if (book.volumeInfo.pageCount){
           newBookObj.pageCount = book.volumeInfo.pageCount.toString();
         } else {
-          newBookObj.pageCount = 'no publisher available';
+          newBookObj.pageCount = 'no page number available';
         }
         // ISBM
         if (book.volumeInfo.industryIdentifiers){
           newBookObj.isbm = book.volumeInfo.industryIdentifiers[0].identifier.toString();
         } else {
-          newBookObj.isbm = 'no publisher available';
+          newBookObj.isbm = 'no ISBM available';
         }
         // buy_book
         if (book.volumeInfo.infoLink){
           newBookObj.buy_book = book.volumeInfo.infoLink;
         } else {
-          newBookObj.buy_book = 'no publisher available';
+          newBookObj.buy_book = 'no buy infomation available';
         }
 
         // sample_book
         if (book.volumeInfo.previewLink){
           newBookObj.sample_book = book.volumeInfo.previewLink;
         } else {
-          newBookObj.sample_book = 'no publisher available';
+          newBookObj.sample_book = 'no sample book available';
         }
 
 
@@ -115,7 +115,7 @@ $(document).ready(function() {
 
       console.log(books)
 
-
+      //FOR BOOKLIST IMAGES N INFO IN FAVORITE PAGE
       var bookList = $('<div id="bookList">');
       $('.container').append(bookList);
       // APPEND STUFF
@@ -158,11 +158,32 @@ $(document).ready(function() {
           // console.log(this)
           // console.log(books)
           //TO APPEND THE DATA TO MODAL
-
           $('#infoTitle').text(result.title)
           $('#infoImage').find('img').attr("src", result.image)
           $('#infoDep').text(result.description)
+          $('#pubName').text(result.publisher)
+          $('#pubDate').text(result.publisherdate)
+          $('#categInfo').text(result.categories)
+          $('#pageNum').text(result.pageCount)
+          $('#isbm').text(result.isbm)
+          $('#buyBook').text.("Buy Book").attr("href", result.buy_book);
+          // $('#sampleBook').text(result.sample_book)
+          // Insert whatever you want the link to be called inside .text
+          // Insert whatever you want the link to direct to inside the attr href
+          $('#sampleBook').text("Sample Book").attr("href", result.sample_book);
         })
+
+
+//-----TESTING------
+//.attr("href", "http://www.google.com");
+
+// function myFunction() {
+//     var str = "Free Web Building Tutorials!";
+//     var result = str.link("http://www.w3schools.com");
+//     document.getElementById("demo").innerHTML = result;
+// }
+
+
 
 
     }); //end of json

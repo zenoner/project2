@@ -92,6 +92,7 @@ body{
 
 #infoDep{ /* modula part*/
   margin-top: 20px;
+  font-size: 15px;
 }
 
 .modal-content{
@@ -126,6 +127,22 @@ body{
 
 #favLink {
 
+}
+
+#pubName {
+  font-weight: bold;
+}
+
+#categInfo {
+  font-weight: bold;
+}
+
+#isbm {
+  font-weight: bold;
+}
+
+#sampleBook {
+  font-weight: bold;
 }
 
 .introPart{
