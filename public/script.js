@@ -166,7 +166,7 @@ $(document).ready(function() {
           $('#categInfo').text(result.categories)
           $('#pageNum').text(result.pageCount)
           $('#isbm').text(result.isbm)
-          $('#buyBook').text.("Buy Book").attr("href", result.buy_book);
+          $('#buyBook').text("Buy Book").attr("href", result.buy_book);
           // $('#sampleBook').text(result.sample_book)
           // Insert whatever you want the link to be called inside .text
           // Insert whatever you want the link to direct to inside the attr href
