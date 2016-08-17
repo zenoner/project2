@@ -157,6 +157,7 @@ $(document).ready(function() {
 
           // console.log(this)
           // console.log(books)
+
           //TO APPEND THE DATA TO MODAL
           $('#infoTitle').text(result.title)
           $('#infoImage').find('img').attr("src", result.image)
