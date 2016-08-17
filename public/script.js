@@ -2,7 +2,6 @@
 //variable group
  var cList = $('ul.author')
 
-
 $(document).ready(function() {
   console.log('loaded!!!')
 
@@ -111,7 +110,7 @@ $(document).ready(function() {
 
         //DATA INTO BOOKS ARRAY
         books.push(newBookObj)
-      });
+     }); //end of forEach() function
 
       console.log(books)
 
