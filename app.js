@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session')
 
 //var db = pgp('postgres://Seiji@localhost:5432/auth2');
-var psqldb = process.env.DATABASE_URL || 'postgres://robertcrozier@localhost:5432/bands_on_the_run';
+var psqldb = process.env.DATABASE_URL || 'postgres://Seiji@localhost:5432/auth2';
 var db = pgp(psqldb);
 
 
